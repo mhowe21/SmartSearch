@@ -52,7 +52,12 @@ function run() //run the following functions on button press
 
       // check for duplicate and handle if one is possible
       if (message == true) {
-      bootbox.alert("a message");
+
+        $(function(){
+          console.log("a message");
+          
+        });
+      
 
         // if (window.confirm("A potential duplicate was found. \nClick OK to process the request Click cancel to abort\n" + duplicateInstanceName + "\n" + duplicateInstanceURL + "\n" + duplicateInstanceID)) {
         //   submitRequest();

@@ -8,7 +8,7 @@
   "page_action": {
 
     "default_popup": "popup.html",
-    "request_scripts": ["background.js"],
+    "request_scripts": ["jquery-3.4.1.min.js", "papaparse.min.js", "bootstrap.min.js", "bootbox.js", "background.js"],
     "default_icon": {
       "16": "images/Jolt16.png",
       "32": "images/Jolt32.png",
