@@ -28,6 +28,7 @@
   "permissions": ["activeTab", "https://siteadmin.instructure.com/", "storage", "declarativeContent", "tabs"],
   "content_scripts": [{
     "js": ["background.js"],
+    "css":["bootstrap.min.css"],
     "matches": ["https://siteadmin.instructure.com/"]
   }],
   "background": {
