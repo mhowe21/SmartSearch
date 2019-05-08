@@ -52,12 +52,13 @@ function run() //run the following functions on button press
 
       // check for duplicate and handle if one is possible
       if (message == true) {
+      bootbox.alert("testing");
 
-        if (window.confirm("A potential duplicate was found. \nClick OK to process the request Click cancel to abort\n" + duplicateInstanceName + "\n" + duplicateInstanceURL + "\n" + duplicateInstanceID)) {
-          submitRequest();
-        } else {
-          //do any exit logic that needs to be done. 
-        }
+        // if (window.confirm("A potential duplicate was found. \nClick OK to process the request Click cancel to abort\n" + duplicateInstanceName + "\n" + duplicateInstanceURL + "\n" + duplicateInstanceID)) {
+        //   submitRequest();
+        // } else {
+        //   //do any exit logic that needs to be done. 
+        // }
       }
 
       if (message == false) {

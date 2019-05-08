@@ -27,12 +27,12 @@
 
   "permissions": ["activeTab", "https://siteadmin.instructure.com/", "storage", "declarativeContent", "tabs"],
   "content_scripts": [{
-    "js": ["background.js"],
+    "js": ["background.js", "papaparse.min.js", "bootstrap.min.js", "bootbox.all.js"],
     "css":["bootstrap.min.css"],
     "matches": ["https://siteadmin.instructure.com/"]
   }],
   "background": {
-    "scripts": ["background.js"],
+    "scripts": ["background.js", "papaparse.min.js", "bootstrap.min.js", "bootbox.all.js"],
     "persistent": false,
     "matches": ["https://siteadmin.instructure.com/"]
   }
