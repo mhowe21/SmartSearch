@@ -57,7 +57,8 @@ function run() //run the following functions on button press
            var dialog = $("<p>A potential duplicate was found selct an option</p>" + duplicateInstanceName + duplicateInstanceURL +duplicateInstanceID).dialog({
              buttons: {
                "Process": function () {
-                 alert('you chose Process');
+                 submitRequest();
+                 
                },
                "Replace": function () {
                  alert('you chose Replace');
