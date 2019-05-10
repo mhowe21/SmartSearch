@@ -56,11 +56,14 @@ function run() //run the following functions on button press
          
            var dialog = $('<p>Are you sure?</p>').dialog({
              buttons: {
-               "Yes": function () {
-                 alert('you chose yes');
+               "Process": function () {
+                 alert('you chose Process');
                },
-               "No": function () {
-                 alert('you chose no');
+               "Replace": function () {
+                 alert('you chose Replace');
+               },
+               "Delete": function () {
+                 alert('you chose Delete');
                },
                "Cancel": function () {
                  alert('you chose cancel');
