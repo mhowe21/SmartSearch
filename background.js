@@ -54,7 +54,7 @@ function run() //run the following functions on button press
       if (message == true) {
        $(function () {
          
-           var dialog = $('<p>Are you sure?</p>').dialog({
+           var dialog = $("<p>A potential duplicate was found selct an option</p>" + duplicateInstanceName + duplicateInstanceURL +duplicateInstanceID).dialog({
              buttons: {
                "Process": function () {
                  alert('you chose Process');
