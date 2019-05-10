@@ -53,11 +53,12 @@ function run() //run the following functions on button press
       // check for duplicate and handle if one is possible
       if (message == true) {
 
-        $(function(){
-          console.log("a message");
-          
+        $(document).ready(function() {
+          $("#dialog").dialog({
+            autoOpen: false,
+            modal: true
+          });
         });
-      
 
         // if (window.confirm("A potential duplicate was found. \nClick OK to process the request Click cancel to abort\n" + duplicateInstanceName + "\n" + duplicateInstanceURL + "\n" + duplicateInstanceID)) {
         //   submitRequest();
