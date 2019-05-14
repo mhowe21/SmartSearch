@@ -52,12 +52,45 @@ function run() //run the following functions on button press
 
       // check for duplicate and handle if one is possible
       if (message == true) {
+       $(function () {
+         
+           $("#dialog").dialog({
+                
+                                
+             buttons: {
+               "Process": function () {
+                 submitRequest();
+                 $( this ).dialog("close");
+                 
+               },
+               "Replace": function () {
+                 deleteRequest(duplicateInstanceID);
+                 submitRequest();
+                 $( this ).dialog("close");
 
-        if (window.confirm("A potential duplicate was found. \nClick OK to process the request Click cancel to abort\n" + duplicateInstanceName + "\n" + duplicateInstanceURL + "\n" + duplicateInstanceID)) {
-          submitRequest();
-        } else {
-          //do any exit logic that needs to be done. 
-        }
+               },
+               "Delete": function () {
+                 deleteRequest(duplicateInstanceID);
+                 alert("entry deleted");
+                 $( this ).dialog("close");
+               },
+               "Cancel": function () {
+                $( this ).dialog("close");
+               }
+             }
+           });
+         });
+         $(dialog).text("A potential duplicate was found selct an option" + "\nName:" + duplicateInstanceName + "\nDomain:" + duplicateInstanceURL + "\nID:" + duplicateInstanceID);
+       
+
+
+        
+
+        // if (window.confirm("A potential duplicate was found. \nClick OK to process the request Click cancel to abort\n" + duplicateInstanceName + "\n" + duplicateInstanceURL + "\n" + duplicateInstanceID)) {
+        //   submitRequest();
+        // } else {
+        //   //do any exit logic that needs to be done. 
+        // }
       }
 
       if (message == false) {
@@ -187,4 +220,23 @@ function checkForDuplicate() {
     xhr.send(data);
 
   })
+}
+
+function deleteRequest(did){
+  var data = null;
+
+  var xhr = new XMLHttpRequest();
+  xhr.withCredentials = true;
+
+  xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+      console.log(this.responseText);
+    }
+  });
+
+  xhr.open("DELETE", "https://siteadmin.instructure.com/api/v1/account_domain_lookups/" + did);
+  xhr.setRequestHeader("Authorization", "Bearer " + token);
+    
+  xhr.send(data);
+
 }

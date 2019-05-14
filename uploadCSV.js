@@ -231,7 +231,7 @@ function duplicateHandle(DLA, DLN, DLD, CLN, CLD, DLID) {
         if (DLA.length == 0 || DLA.length == undefined) {
             reject(false);
         }
-        if (DLN == CLN && DLD == CLD) {
+        if (DLN == CLN || DLD == CLD) {
             console.log("a duplicate may have been found");
             duplicateInstanceName = DLN;
             duplicateInstanceURL = DLD;
@@ -245,8 +245,4 @@ function duplicateHandle(DLA, DLN, DLD, CLN, CLD, DLID) {
         }
     })
 
-}
-function done()
-{
-    
 }

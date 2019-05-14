@@ -3,12 +3,19 @@
 <style>
 button{height:50px; width: 90px; outline: none;}
 input{height: 20px; width: 100px; outline: black;}
+body{height: 500px; width: 500px; margin: auto; padding: 10px;}
 </style>
 
 <head>
     <script src="popup.js"></script>
     <script src="background.js"></script>
     <script src="options.js"></script>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="jquery-ui.min.js"></script>    
+    <link rel="stylesheet" href="jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="jquery-ui.theme.min.css">
+
+    
 </head>
 <body>
 
@@ -16,13 +23,16 @@ input{height: 20px; width: 100px; outline: black;}
 
 <!--What is your token? <input type="text" id="enterToken" value="">-->
 <!--<br>-->
-what is the instance name?<input type="text" id="enterName" value="">
+Name?<br><input type="text" id="enterName" value="">
 <br>
-what is the instance URL? <input type="text" id="enterURL" value="">
+Domain? <br><input type="text" id="enterURL" value="">
 <br>
-what does the instance use for authentication? <input type="text" id="enterAuth" value="">
-<br><br>
+Authentication? <br><input type="text" id="enterAuth" value="">
+<br>
+<br>
 
 <button id="swag">Create Entry</button>
+<br>
 <p><a href="UploadCSV.html" id="UPloadCSVID">Upload a CSV</p>
+<div id="dialog" title="Action Select"></div>
 </body>
