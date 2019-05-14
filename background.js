@@ -60,22 +60,22 @@ function run() //run the following functions on button press
              buttons: {
                "Process": function () {
                  submitRequest();
-                 dialog.dialog('close');
+                 $( this ).dialog("close");
                  
                },
                "Replace": function () {
                  deleteRequest(duplicateInstanceID);
                  submitRequest();
-                 dialog.dialog('close');
+                 $( this ).dialog("close");
 
                },
                "Delete": function () {
                  deleteRequest(duplicateInstanceID);
                  alert("entry deleted");
-                 dialog.dialog('close');
+                 $( this ).dialog("close");
                },
                "Cancel": function () {
-                dialog.dialog('close');
+                $( this ).dialog("close");
                }
              }
            });
