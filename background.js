@@ -55,20 +55,27 @@ function run() //run the following functions on button press
        $(function () {
          
            var dialog = $("<p>A potential duplicate was found selct an option</p>" + duplicateInstanceName + duplicateInstanceURL +duplicateInstanceID).dialog({
+                
+                                
              buttons: {
                "Process": function () {
                  submitRequest();
+                 dialog.dialog('close');
                  
                },
                "Replace": function () {
-                 alert('you chose Replace');
+                 deleteRequest(duplicateInstanceID);
+                 submitRequest();
+                 dialog.dialog('close');
+
                },
                "Delete": function () {
-                 alert('you chose Delete');
+                 deleteRequest(duplicateInstanceID);
+                 alert("entry deleted");
+                 dialog.dialog('close');
                },
                "Cancel": function () {
-                 alert('you chose cancel');
-                 dialog.dialog('close');
+                dialog.dialog('close');
                }
              }
            });
@@ -212,4 +219,23 @@ function checkForDuplicate() {
     xhr.send(data);
 
   })
+}
+
+function deleteRequest(did){
+  var data = null;
+
+  var xhr = new XMLHttpRequest();
+  xhr.withCredentials = true;
+
+  xhr.addEventListener("readystatechange", function () {
+    if (this.readyState === 4) {
+      console.log(this.responseText);
+    }
+  });
+
+  xhr.open("DELETE", "https://siteadmin.instructure.com/api/v1/account_domain_lookups/" + did);
+  xhr.setRequestHeader("Authorization", "Bearer " + token);
+    
+  xhr.send(data);
+
 }

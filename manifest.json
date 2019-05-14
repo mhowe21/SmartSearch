@@ -28,7 +28,7 @@
   "permissions": ["activeTab", "https://siteadmin.instructure.com/", "storage", "declarativeContent", "tabs"],
   "content_scripts": [{
     "js": ["jquery-3.4.1.min.js", "papaparse.min.js", "jquery-ui.min.js", "background.js"],
-    "css":["vex.css", "vex-theme-os.css","bootstrap.min.css"],
+    "css":[],
     "matches": ["https://siteadmin.instructure.com/"]
   }],
   "background": {
