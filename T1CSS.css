@@ -1,5 +1,5 @@
 body{
-    height: 500px;
+    height: 380px;
      width: 400px; 
      margin: auto; 
      padding: 10px;
@@ -8,14 +8,19 @@ body{
 #input_div input{
     font-size: small;
     width: 350px;
+    height: 30px;
     outline: black;
+}
+
+#input_div p{
+    font-size: medium;
 }
 
 #swag{
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 10px 32px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
