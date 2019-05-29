@@ -86,4 +86,9 @@ body{
 	top:1px;
 }
 
+#fileUploadOptions p{
+font-size: medium;
+font-weight: bold;
+}
+
 
