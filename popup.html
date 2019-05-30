@@ -1,9 +1,9 @@
 <!doctype html>
 <title>Add app</title>
 <style>
-button{height:50px; width: 90px; outline: none;}
+/* button{height:50px; width: 90px; outline: none;}
 input{height: 20px; width: 100px; outline: black;}
-body{height: 500px; width: 500px; margin: auto; padding: 10px;}
+body{height: 500px; width: 500px; margin: auto; padding: 10px;} */
 </style>
 
 <head>
@@ -14,6 +14,8 @@ body{height: 500px; width: 500px; margin: auto; padding: 10px;}
     <script src="jquery-ui.min.js"></script>    
     <link rel="stylesheet" href="jquery-ui.structure.min.css">
     <link rel="stylesheet" href="jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="T1CSS.css">
 
     
 </head>
@@ -23,15 +25,20 @@ body{height: 500px; width: 500px; margin: auto; padding: 10px;}
 
 <!--What is your token? <input type="text" id="enterToken" value="">-->
 <!--<br>-->
-Name?<br><input type="text" id="enterName" value="">
-<br>
-Domain? <br><input type="text" id="enterURL" value="">
-<br>
-Authentication? <br><input type="text" id="enterAuth" value="">
+
+<div id="input_div">
+<h1>Add to Smart Search</h1>
+<p></p>
+<p>Instance Name?</p><input type="text" id="enterName" placeholder="ex: university of name" value="">
+<p></p>
+<p>Instance Domain?</p><input type="text" id="enterURL" placeholder="ex: instance.instructure.com" value="">
+<p></p>
+<p>Instance Authentication?</p><input type="text" id="enterAuth" value="">
 <br>
 <br>
 
 <button id="swag">Create Entry</button>
+</div>
 <br>
 <p><a href="UploadCSV.html" id="UPloadCSVID">Upload a CSV</p>
 <div id="dialog" title="Action Select"></div>

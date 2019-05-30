@@ -1,0 +1,49 @@
+body{
+	margin: 10px; 
+	padding: 0.3%;}
+
+#tokenStorage #tokenEnterButton{
+	background-color:#44c767;
+	
+	border:2px solid #18ab29;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+    font-size:17px;
+    font-weight: bold;
+	padding:1px 25px;
+	text-decoration:none;
+    text-shadow:0px 1px 0px #2f6627;
+    margin: 12px;
+}
+#tokenStorage #tokenEnterButton:hover {
+	background-color:#5cbf2a;
+}
+#tokenStorage #tokenEnterButton:active {
+	position:relative;
+	top:1px;
+}
+
+#tokenStorage #clearToken {
+	
+	background-color:#db1b1b;	
+	border:2px solid #8a172a;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	font-weight: bold;
+	padding:1px 25px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #e80c29;
+	margin: 12px;
+}
+#tokenStorage #clearToken:hover {
+	background-color:#bd2a5b;
+}
+#tokenStorage #clearToken:active {
+	position:relative;
+	top:1px;
+}

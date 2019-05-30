@@ -32,7 +32,7 @@ function tStore() //stores the token in chrome locally
 
 }
 document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("ClearToken").addEventListener("click", tRemove);
+  document.getElementById("clearToken").addEventListener("click", tRemove);
 
 });
 
