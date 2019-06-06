@@ -92,4 +92,25 @@ font-size: medium;
 font-weight: bold;
 }
 
+#searchInstance{
+	background-color:#09bbe7;
+	
+	border:2px solid #14b5ca;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+    font-size:15px;
+    font-weight: bold;
+	padding:5px 15px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #188da1;
+}
+#searchInstance:hover {
+	background-color:#1c94c4;
+}
+#searchInstance:active {
+	position:relative;
+	top:1px;
+}
 
