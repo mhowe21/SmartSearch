@@ -8,6 +8,10 @@ document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("swag").addEventListener("click", run); // click the button and have it do crap
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("searchInstance").addEventListener("click", sRun); // click the button and have it do crap
+}); 
+
 
 
 // page decliration 
@@ -112,6 +116,15 @@ function run()
 
 }
 
+// run the following on search request
+async function sRun(){
+
+}
+
+
+
+
+// general functions
 function submitRequest() {
 
   if (instAuth != "") {
@@ -171,6 +184,8 @@ function submitRequest() {
   }
 }
 
+
+
 function checkForDuplicate() {
   return new Promise(function (resolve, reject) {
        
@@ -221,6 +236,7 @@ function checkForDuplicate() {
 
   })
 }
+
 // Remove Entry from SS List. Also utilized for replacements. 
 function deleteRequest(did){
   var data = null;
@@ -240,6 +256,34 @@ function deleteRequest(did){
   xhr.send(data);
 
 }
+
+// search API request
+function searchXHR(){
+return new Promise(function(resolve ,reject){
+var data = null;
+
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+    let searchJSON = JSON.parse(this.responseText); 
+    
+
+  }
+});
+
+xhr.open("GET", "https://siteadmin.instructure.com/api/v1/accounts/search?domain=" + instURL);
+xhr.setRequestHeader("Authorization", "Bearer " + token);
+
+
+xhr.send(data);
+
+})
+
+}
+
 
 
 
