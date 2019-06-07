@@ -3,11 +3,14 @@ var authStatus;
 var duplicateInstanceName;
 var duplicateInstanceURL;
 var duplicateInstanceID;
-
+// actions
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("swag").addEventListener("click", run); // click the button and have it do crap
 });
 
+
+
+// page decliration 
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
   chrome.declarativeContent.onPageChanged.addRules([{
     conditions: [new chrome.declarativeContent.PageStateMatcher({
@@ -27,7 +30,7 @@ chrome.storage.local.get(["token"], function (result) {
     alert("Please head to the options page to set your token."); // tell the user to add a token in the options page if one is not stored
   }
 
-}); // retrive token from options storage
+}); 
 
 chrome.storage.local.get(["duplicateValidateOnOff"], function (result) {
   duplicateCheck = result.duplicateValidateOnOff;
@@ -35,7 +38,8 @@ chrome.storage.local.get(["duplicateValidateOnOff"], function (result) {
 }); // retrive on off status 1
 
 
-function run() //run the following functions on button press
+//run the following functions on create request
+function run() 
 {
 
   instanceURL();
@@ -86,11 +90,7 @@ function run() //run the following functions on button press
 
         
 
-        // if (window.confirm("A potential duplicate was found. \nClick OK to process the request Click cancel to abort\n" + duplicateInstanceName + "\n" + duplicateInstanceURL + "\n" + duplicateInstanceID)) {
-        //   submitRequest();
-        // } else {
-        //   //do any exit logic that needs to be done. 
-        // }
+     
       }
 
       if (message == false) {
@@ -221,7 +221,7 @@ function checkForDuplicate() {
 
   })
 }
-
+// Remove Entry from SS List. Also utilized for replacements. 
 function deleteRequest(did){
   var data = null;
 
@@ -240,3 +240,6 @@ function deleteRequest(did){
   xhr.send(data);
 
 }
+
+
+
