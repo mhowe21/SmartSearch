@@ -118,7 +118,12 @@ function run()
 
 // run the following on search request
 async function sRun(){
+instanceURL();
+instanceName();
+instanceAuth();  
 
+let sRay = await searchXHR();
+console.log(sRay);
 }
 
 
@@ -269,6 +274,12 @@ xhr.addEventListener("readystatechange", function () {
   if (this.readyState === 4) {
     console.log(this.responseText);
     let searchJSON = JSON.parse(this.responseText); 
+    if(this.status == 200){
+      resolve(searchJSON);
+    }
+    if(this.status != 200){
+      reject("An error occured when searching");
+    }
     
 
   }
