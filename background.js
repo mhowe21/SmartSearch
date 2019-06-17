@@ -130,6 +130,8 @@ console.log(sRay);
 
 
 // general functions
+
+//submit API request. 
 function submitRequest() {
 
   if (instAuth != "") {
