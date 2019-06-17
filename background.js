@@ -118,7 +118,7 @@ async function sRun() {
 
   let sRay = await searchXHR();
   console.log(sRay);
-  let display = displaySearch(sRay);
+  let display = await displaySearch(sRay);
  
 }
   
