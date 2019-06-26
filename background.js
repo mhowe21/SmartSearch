@@ -299,9 +299,9 @@ function displaySearch(sRay){
        $(function () {
          //$("#dialog").dialog().text(sRay[i].name + "" + sRay[i].domain + "" + sRay[i].id);
          $("#dialog").dialog().html("<ul>"+ 
-         "<li> "+ sRay[i].name + "</li>" +
-         "<li> " + sRay[i].domain + "</li>" +
-         "<li> " + sRay[i].id + "</li>" +         
+         "<li> Instance Name: "+ sRay[i].name + "</li>" +
+         "<li> Instance Domain: " + sRay[i].domain + "</li>" +
+         //"<li> Instance ID" + sRay[i].id + "</li>" +
          "</ul>")
 
 
