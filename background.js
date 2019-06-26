@@ -297,7 +297,12 @@ function displaySearch(sRay){
   return new Promise(function(resolve,reject){
      for (let i = 0; i < sRay.length; i++) {
        $(function () {
-         $("#dialog").dialog().text(sRay[i].name + "" + sRay[i].domain + "" + sRay[i].id);
+         //$("#dialog").dialog().text(sRay[i].name + "" + sRay[i].domain + "" + sRay[i].id);
+         $("#dialog").dialog().html("<ul>"+ 
+         "<li> "+ sRay[i].name + "</li>" +
+         "<li> " + sRay[i].domain + "</li>" +
+         "<li> " + sRay[i].id + "</li>" +         
+         "</ul>")
 
 
        });
