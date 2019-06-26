@@ -295,10 +295,15 @@ function searchXHR() {
 }
 function displaySearch(sRay){
   return new Promise(function(resolve,reject){
-    $( function() {
-      $( "#dialog" ).dialog().text(sRay);
-      
-    } );
+     for (let i = 0; i < sRay.length; i++) {
+       $(function () {
+         $("#dialog").dialog().text(sRay[i].name + "" + sRay[i].domain + "" + sRay[i].id);
+
+
+       });
+
+     }
+    
   })
   
 }
