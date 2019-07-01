@@ -298,11 +298,14 @@ function displaySearch(sRay){
      for (let i = 0; i < sRay.length; i++) {
        $(function () {
          //$("#dialog").dialog().text(sRay[i].name + "" + sRay[i].domain + "" + sRay[i].id);
-         $("#dialog").dialog().html("<ul>"+ 
+         $("#dialog2").dialog().html("<ul>"+ 
          "<li> Instance Name: "+ sRay[i].name + "</li>" +
          "<li> Instance Domain: " + sRay[i].domain + "</li>" +
          //"<li> Instance ID" + sRay[i].id + "</li>" +
          "</ul>")
+         
+         
+
 
 
        });

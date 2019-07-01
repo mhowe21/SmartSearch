@@ -8,7 +8,7 @@
   "page_action": {
 
     "default_popup": "popup.html",
-    "request_scripts": ["jquery-3.4.1.min.js", "papaparse.min.js", "bootstrap.min.js", "bootbox.js", "background.js"],
+    "request_scripts": ["jquery-3.4.1.min.js", "papaparse.min.js", "background.js"],
     "default_icon": {
       "16": "images/Jolt16.png",
       "32": "images/Jolt32.png",
@@ -28,7 +28,7 @@
   "permissions": ["activeTab", "https://siteadmin.instructure.com/", "storage", "declarativeContent", "tabs"],
   "content_scripts": [{
     "js": ["jquery-3.4.1.min.js", "papaparse.min.js", "jquery-ui.min.js", "background.js"],
-    "css":["bootstrap.min.css"],
+    "css":[],
     "matches": ["https://siteadmin.instructure.com/"]
   }],
   "background": {
