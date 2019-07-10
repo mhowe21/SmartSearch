@@ -301,22 +301,32 @@ function searchXHR() {
 }
 function displaySearch(sRay){
   return new Promise(function(resolve,reject){
-     for (let i = 0; i < sRay.length; i++) {
-       $(function () {
-         //$("#dialog").dialog().text(sRay[i].name + "" + sRay[i].domain + "" + sRay[i].id);
-         $("#dialog2").dialog().html("<ul>"+ 
-         "<li> Instance Name: "+ sRay[i].name + "</li>" +
-         "<li> Instance Domain: " + sRay[i].domain + "</li>" +
-         "<li> Instance ID:" + sRay[i].id + "</li>" +
-         "</ul>")
-         
-         
+
+    if (sRay.length != 0)
+    {
+        for (let i = 0; i < sRay.length; i++) {
+          $(function () {
+            //$("#dialog").dialog().text(sRay[i].name + "" + sRay[i].domain + "" + sRay[i].id);
+            $("#dialog2").dialog().html("<ul>" +
+              "<li> Instance Name: " + sRay[i].name + "</li>" +
+              "<li> Instance Domain: " + sRay[i].domain + "</li>" +
+              "<li> Instance ID:" + sRay[i].id + "</li>" +
+              "</ul>")
 
 
 
-       });
 
-     }
+
+          });
+
+        }
+        resolve("Result found");
+    }
+    if(sRay.length == 0){
+      $("#dialog2").dialog().html("<p>No Instance found</p>");
+      reject("Nothing found in array");
+    }
+   
     
   })
   
