@@ -3,11 +3,18 @@ var authStatus;
 var duplicateInstanceName;
 var duplicateInstanceURL;
 var duplicateInstanceID;
-
+// actions
 document.addEventListener("DOMContentLoaded", function () {
   document.getElementById("swag").addEventListener("click", run); // click the button and have it do crap
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("searchInstance").addEventListener("click", sRun); // click the button and have it do crap
+});
+
+
+
+// page decliration 
 chrome.declarativeContent.onPageChanged.removeRules(undefined, function () {
   chrome.declarativeContent.onPageChanged.addRules([{
     conditions: [new chrome.declarativeContent.PageStateMatcher({
@@ -27,7 +34,7 @@ chrome.storage.local.get(["token"], function (result) {
     alert("Please head to the options page to set your token."); // tell the user to add a token in the options page if one is not stored
   }
 
-}); // retrive token from options storage
+});
 
 chrome.storage.local.get(["duplicateValidateOnOff"], function (result) {
   duplicateCheck = result.duplicateValidateOnOff;
@@ -35,8 +42,8 @@ chrome.storage.local.get(["duplicateValidateOnOff"], function (result) {
 }); // retrive on off status 1
 
 
-function run() //run the following functions on button press
-{
+//run the following functions on create request
+function run() {
 
   instanceURL();
   instanceName();
@@ -52,45 +59,42 @@ function run() //run the following functions on button press
 
       // check for duplicate and handle if one is possible
       if (message == true) {
-       $(function () {
-         
-           $("#dialog").dialog({
-                
-                                
-             buttons: {
-               "Process": function () {
-                 submitRequest();
-                 $( this ).dialog("close");
-                 
-               },
-               "Replace": function () {
-                 deleteRequest(duplicateInstanceID);
-                 submitRequest();
-                 $( this ).dialog("close");
+        $(function () {
 
-               },
-               "Delete": function () {
-                 deleteRequest(duplicateInstanceID);
-                 alert("entry deleted");
-                 $( this ).dialog("close");
-               },
-               "Cancel": function () {
-                $( this ).dialog("close");
-               }
-             }
-           });
-         });
-         $(dialog).text("A potential duplicate was found selct an option" + "\nName:" + duplicateInstanceName + "\nDomain:" + duplicateInstanceURL + "\nID:" + duplicateInstanceID);
-       
+          $("#dialog").dialog({
+            modal: true,
+
+            buttons: {
+              "Process": function () {
+                submitRequest();
+                $(this).dialog("close");
+
+              },
+              "Replace": function () {
+                deleteRequest(duplicateInstanceID);
+                submitRequest();
+                $(this).dialog("close");
+
+              },
+              "Delete": function () {
+                deleteRequest(duplicateInstanceID);
+                alert("entry deleted");
+                $(this).dialog("close");
+              },
+              "Cancel": function () {
+                $(this).dialog("close");
+              }
+            }
+          });
+        });
+        //$(dialog).text("A potential duplicate was found selct an option" + "\nName:" + duplicateInstanceName + "\nDomain:" + duplicateInstanceURL + "\nID:" + duplicateInstanceID);
+        $("#dialog").dialog().html("<ul>" +
+          "<li> Instance Name: " + duplicateInstanceName + "</li>" +
+          "<li> Instance Domain: " + duplicateInstanceURL + "</li>" +
+          "<li> Instance ID:" + duplicateInstanceID + "</li>" +
+          "</ul>")
 
 
-        
-
-        // if (window.confirm("A potential duplicate was found. \nClick OK to process the request Click cancel to abort\n" + duplicateInstanceName + "\n" + duplicateInstanceURL + "\n" + duplicateInstanceID)) {
-        //   submitRequest();
-        // } else {
-        //   //do any exit logic that needs to be done. 
-        // }
       }
 
       if (message == false) {
@@ -112,6 +116,25 @@ function run() //run the following functions on button press
 
 }
 
+// run the following on search request
+async function sRun() {
+  instanceURL();
+  instanceName();
+  instanceAuth();
+
+  let sRay = await searchXHR();
+  console.log(sRay);
+  let display = await displaySearch(sRay);
+ 
+}
+  
+
+
+
+
+// general functions
+
+//submit API request. 
 function submitRequest() {
 
   if (instAuth != "") {
@@ -171,9 +194,11 @@ function submitRequest() {
   }
 }
 
+
+
 function checkForDuplicate() {
   return new Promise(function (resolve, reject) {
-       
+
     //XHR request
     var data = null;
     var xhr = new XMLHttpRequest();
@@ -222,7 +247,8 @@ function checkForDuplicate() {
   })
 }
 
-function deleteRequest(did){
+// Remove Entry from SS List. Also utilized for replacements. 
+function deleteRequest(did) {
   var data = null;
 
   var xhr = new XMLHttpRequest();
@@ -236,7 +262,72 @@ function deleteRequest(did){
 
   xhr.open("DELETE", "https://siteadmin.instructure.com/api/v1/account_domain_lookups/" + did);
   xhr.setRequestHeader("Authorization", "Bearer " + token);
-    
+
   xhr.send(data);
 
+}
+
+// search API request
+function searchXHR() {
+  return new Promise(function (resolve, reject) {
+    var data = null;
+
+    var xhr = new XMLHttpRequest();
+    xhr.withCredentials = true;
+
+    xhr.addEventListener("readystatechange", function () {
+      if (this.readyState === 4) {
+        console.log(this.responseText);
+        let searchJSON = JSON.parse(this.responseText);
+        if (this.status == 200) {
+          resolve(searchJSON);
+        }
+        if (this.status != 200) {
+          reject("An error occured when searching");
+        }
+
+
+      }
+    });
+
+    xhr.open("GET", "https://siteadmin.instructure.com/api/v1/accounts/search?domain=" + instURL);
+    xhr.setRequestHeader("Authorization", "Bearer " + token);
+
+
+    xhr.send(data);
+
+  })
+
+}
+function displaySearch(sRay){
+  return new Promise(function(resolve,reject){
+
+    if (sRay.length != 0)
+    {
+        for (let i = 0; i < sRay.length; i++) {
+          $(function () {
+            //$("#dialog").dialog().text(sRay[i].name + "" + sRay[i].domain + "" + sRay[i].id);
+            $("#dialog2").dialog().html("<ul>" +
+              "<li> Instance Name: " + sRay[i].name + "</li>" +
+              "<li> Instance Domain: " + sRay[i].domain + "</li>" +
+              "<li> Instance ID:" + sRay[i].id + "</li>" +
+              "</ul>")
+
+
+
+
+
+          });
+
+        }
+        resolve("Result found");
+    }
+    if(sRay.length == 0){
+      $("#dialog2").dialog().html("<p>No Instance found</p>");
+      reject("Nothing found in array");
+    }
+   
+    
+  })
+  
 }

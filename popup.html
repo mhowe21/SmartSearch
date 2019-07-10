@@ -1,10 +1,5 @@
 <!doctype html>
 <title>Add app</title>
-<style>
-/* button{height:50px; width: 90px; outline: none;}
-input{height: 20px; width: 100px; outline: black;}
-body{height: 500px; width: 500px; margin: auto; padding: 10px;} */
-</style>
 
 <head>
     <script src="popup.js"></script>
@@ -14,7 +9,6 @@ body{height: 500px; width: 500px; margin: auto; padding: 10px;} */
     <script src="jquery-ui.min.js"></script>    
     <link rel="stylesheet" href="jquery-ui.structure.min.css">
     <link rel="stylesheet" href="jquery-ui.theme.min.css">
-    <link rel="stylesheet" href="bootstrap.min.css">
     <link rel="stylesheet" href="T1CSS.css">
 
     
@@ -27,8 +21,9 @@ body{height: 500px; width: 500px; margin: auto; padding: 10px;} */
 <!--<br>-->
 
 <div id="input_div">
-<h1>Add to Smart Search</h1>
-<p></p>
+<!-- <p>Search Existing Instances</p><input type="text" id="searchName" placeholder="ex: university of name" value="">
+<p></p> -->
+
 <p>Instance Name?</p><input type="text" id="enterName" placeholder="ex: university of name" value="">
 <p></p>
 <p>Instance Domain?</p><input type="text" id="enterURL" placeholder="ex: instance.instructure.com" value="">
@@ -36,10 +31,11 @@ body{height: 500px; width: 500px; margin: auto; padding: 10px;} */
 <p>Instance Authentication?</p><input type="text" id="enterAuth" value="">
 <br>
 <br>
-
-<button id="swag">Create Entry</button>
+<button id="searchInstance">Search</button>
+<button id="swag">Create</button>
 </div>
 <br>
 <p><a href="UploadCSV.html" id="UPloadCSVID">Upload a CSV</p>
-<div id="dialog" title="Action Select"></div>
+<div id="dialog" title="Create Action"></div>
+<div id="dialog2" title="Search"></div>
 </body>
