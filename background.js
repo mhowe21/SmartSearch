@@ -87,7 +87,13 @@ function run() {
             }
           });
         });
-        $(dialog).text("A potential duplicate was found selct an option" + "\nName:" + duplicateInstanceName + "\nDomain:" + duplicateInstanceURL + "\nID:" + duplicateInstanceID);
+        //$(dialog).text("A potential duplicate was found selct an option" + "\nName:" + duplicateInstanceName + "\nDomain:" + duplicateInstanceURL + "\nID:" + duplicateInstanceID);
+        $("#dialog").dialog().html("<ul>" +
+          "<li> Instance Name: " + duplicateInstanceName + "</li>" +
+          "<li> Instance Domain: " + duplicateInstanceURL + "</li>" +
+          "<li> Instance ID:" + duplicateInstanceID + "</li>" +
+          "</ul>")
+
 
       }
 
@@ -301,7 +307,7 @@ function displaySearch(sRay){
          $("#dialog2").dialog().html("<ul>"+ 
          "<li> Instance Name: "+ sRay[i].name + "</li>" +
          "<li> Instance Domain: " + sRay[i].domain + "</li>" +
-         //"<li> Instance ID" + sRay[i].id + "</li>" +
+         "<li> Instance ID:" + sRay[i].id + "</li>" +
          "</ul>")
          
          
