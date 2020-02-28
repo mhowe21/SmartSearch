@@ -1,3 +1,5 @@
+// global variables. Yeah I know but it makes sense for this one. 
+
 var returnStatus;
 var authStatus;
 var duplicateInstanceName;
